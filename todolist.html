@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="todolist.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>TodoList</title>
+    <script>
+        function addItem() {
+            var newItem = document.createElement("div");
+            newItem.innerHTML = document.getElementById("box").value;
+            newItem.classList.add('list-items');
+            var randomColor = getRandomColor();
+            newItem.style.backgroundColor = randomColor;
+            newItem.style.borderColor = randomColor;
+            newItem.onclick = removeItem;
+            document.getElementById("list").appendChild(newItem);
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function removeItem() {
+            document.getElementById("list").removeChild(this);
+        }
+    </script>
+</head>
+
+<body>
+    <h1><span class="material-symbols-outlined">
+            bolt
+        </span>Todo List</h1>
+    <br />
+    <div id="list">
+        <input type="text" id="box" placeholder="Type here to add task" />
+        <br />
+        <input type="button" value="Add Task" onclick="addItem();" />
+    </div>
+    <footer>
+        <p>Todo List App 2024</p>
+    </footer>
+</body>
+
+</html>
